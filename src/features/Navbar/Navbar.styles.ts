@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 /**
@@ -8,7 +9,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   padding: 0.5rem;
-  padding-top: 1rem;
   border-bottom: 1px solid #e5e5ec;
 `;
 
@@ -17,4 +17,28 @@ export const Wrapper = styled.div`
  */
 export const Title = styled.span`
   font-weight: bold;
+  padding-right: 1rem;
+  border-right: 1px solid #e5e5ec;
+`;
+
+/**
+ * Wraps the navigation links.
+ */
+export const LinksWrapper = styled.div`
+  padding-left: 0.5rem;
+`;
+
+/**
+ * A styled link.
+ */
+export const NavbarLink = styled(Link)`
+  padding: 0rem 0.5rem;
+  color: #535361;
+  text-decoration: none;
+  transition: 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: #000000;
+  }
 `;
