@@ -85,3 +85,35 @@ export const Trait = styled.div`
     opacity: 0;
   }
 `;
+
+/**
+ * A row flex item.
+ */
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+/**
+ * A padded box.
+ */
+export const Box = styled.div`
+  padding: 0rem 0.5rem;
+`;
+
+/**
+ * Standard button.
+ */
+export const Button = styled.button`
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 1rem;
+  background-color: rgb(242, 242, 245);
+  border-radius: 0.5rem;
+  transition: 200ms ease;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(230, 230, 230);
+  }
+`;

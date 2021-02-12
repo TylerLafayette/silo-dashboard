@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import {
+  Box,
+  Button,
   FlexWrapper,
+  Row,
   Title,
   Trait,
   TraitColumn,
@@ -97,7 +100,33 @@ const TraitMap = () => {
 
   return (
     <Wrapper>
-      <Title>Traits</Title>
+      <Row>
+        <Title>Traits</Title>
+        <Box>
+          <Button
+            onClick={(e) => {
+              const newTraitName = prompt("Enter a top-level trait name");
+
+              (async () => {
+                const req = await fetch(`/api/v1/traits`, {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify({
+                    parentId: 0,
+                    traitName: newTraitName,
+                  }),
+                });
+
+                window.location.reload();
+              })();
+            }}
+          >
+            +
+          </Button>
+        </Box>
+      </Row>
       <TraitMapWrapper>
         <FlexWrapper>{mapToElements(map)}</FlexWrapper>
       </TraitMapWrapper>
