@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
 import { useHistory } from "react-router";
 import TagsInput from "../../components/TagsInput";
 import {
   NewSubject,
   NewSubjectWrapper,
+  RemoveSubjectButton,
+  SubjectActionsWrapper,
+  SubjectFieldsWrapper,
   SubjectName,
   SubjectRow,
   SubjectsWrapper,
@@ -156,24 +160,38 @@ const CreateGroup = () => {
         <NewSubjectWrapper>
           <NewSubject onClick={newSubject}>+ Add a subject</NewSubject>
         </NewSubjectWrapper>
-        {subjects.map((subject) => (
-          <SubjectRow>
-            <SubjectName>Subject {subject.id}</SubjectName>
-            <TraitEntry
-              onChange={(e) => updateAge(subject.id, parseInt(e.target.value))}
-              placeholder={"Age"}
-            />
-            <TraitEntry
-              onChange={(e) =>
-                updateLength(subject.id, parseInt(e.target.value))
-              }
-              placeholder={"Length of stay"}
-            />
-            <TagsInput
-              onChange={(tags) => updateTraits(subject.id, tags)}
-              suggestions={traits.map((x: ITrait) => ({ name: x.traitName }))}
-              placeholder={"Trait1, Trait2..."}
-            />
+        {subjects.map((subject, index) => (
+          <SubjectRow key={subject.id}>
+            <SubjectFieldsWrapper>
+              <SubjectName>Subject {subject.id}</SubjectName>
+              <TraitEntry
+                onChange={(e) =>
+                  updateAge(subject.id, parseInt(e.target.value))
+                }
+                placeholder={"Age"}
+              />
+              <TraitEntry
+                onChange={(e) =>
+                  updateLength(subject.id, parseInt(e.target.value))
+                }
+                placeholder={"Length of stay"}
+              />
+              <TagsInput
+                onChange={(tags) => updateTraits(subject.id, tags)}
+                suggestions={traits.map((x: ITrait) => ({ name: x.traitName }))}
+                placeholder={"Trait1, Trait2..."}
+              />
+            </SubjectFieldsWrapper>
+            <SubjectActionsWrapper>
+              <RemoveSubjectButton
+                onClick={(e) => {
+                  console.log(index);
+                  setSubjects(subjects.filter((_, i) => i !== index));
+                }}
+              >
+                <AiFillDelete />
+              </RemoveSubjectButton>
+            </SubjectActionsWrapper>
           </SubjectRow>
         ))}
       </SubjectsWrapper>

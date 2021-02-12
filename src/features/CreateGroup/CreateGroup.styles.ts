@@ -53,6 +53,7 @@ const fadeIn = keyframes`
 export const SubjectRow = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -61,6 +62,21 @@ export const SubjectRow = styled.div`
   &:nth-child(even) {
     background-color: rgb(242, 242, 245);
   }
+`;
+
+/**
+ * Wraps the fields for each subject.
+ */
+export const SubjectFieldsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+/**
+ * Wraps the actions for each subject.
+ */
+export const SubjectActionsWrapper = styled.div`
+  padding-right: 0.5rem;
 `;
 
 /**
@@ -84,6 +100,19 @@ export const TraitEntry = styled.input`
  */
 export const NewSubjectWrapper = styled.div`
   padding-bottom: 1rem;
+`;
+
+/**
+ * A button to remove the subject.
+ */
+export const RemoveSubjectButton = styled.div`
+  color: #8e8c8c;
+  transition: 200ms ease;
+
+  &:hover {
+    cursor: pointer;
+    color: red;
+  }
 `;
 
 /**
