@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { AiFillDelete } from "react-icons/ai";
+import { useHistory, useParams } from "react-router-dom";
 import {
+  Box,
+  Button,
   MatrixURL,
+  Row,
   SubjectName,
   SubjectRow,
   SubjectsWrapper,
@@ -14,6 +18,7 @@ import {
  * Displays an overview page of a single group.
  */
 const GroupOverview = () => {
+  const history = useHistory();
   const { id } = useParams<{ id: string | undefined }>();
 
   const [subjects, setSubjects] = useState<
@@ -41,13 +46,29 @@ const GroupOverview = () => {
     setSubjects(subjects);
   };
 
+  const deleteGroup = async (id: string | undefined) => {
+    const request = await fetch(`/api/v1/groups/${id}`, {
+      method: "DELETE",
+    });
+
+    const json = await request.json();
+    history.push("/");
+  };
+
   useEffect(() => {
     fetchGroupSubjects(id);
   }, []);
 
   return (
     <Wrapper>
-      <Title>Group {id}</Title>
+      <Row>
+        <Title>Group {id}</Title>
+        <Box>
+          <Button onClick={(e) => deleteGroup(id)}>
+            <AiFillDelete />
+          </Button>
+        </Box>
+      </Row>
       <MatrixURL>
         /api/v1/groups/{id}
         /generate/matrix?traits=cough,wet_cough&attributes=age,length_of_stay&fields=true

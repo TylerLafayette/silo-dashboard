@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CreateGroup from "./features/CreateGroup";
 import GroupOverview from "./features/GroupOverview";
 import Home from "./features/Home";
+import JobsDashboard from "./features/JobsDashboard";
 import MainLayout from "./features/MainLayout";
 import TraitMap from "./features/TraitMap";
 import "./index.css";
@@ -18,6 +19,12 @@ ReactDOM.render(
         </Route>
         <Route exact path="/traits">
           <TraitMap />
+        </Route>
+        <Route exact path="/jobs">
+          <JobsDashboard />
+        </Route>
+        <Route exact path="/jobs/:id">
+          <JobsDashboard />
         </Route>
         <Route path="/groups/create">
           <CreateGroup />

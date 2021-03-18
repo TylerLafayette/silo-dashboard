@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Title, Wrapper, LinksWrapper, NavbarLink } from "./Navbar.styles";
+import { LinksWrapper, NavbarLink, Title, Wrapper } from "./Navbar.styles";
 
 const Navbar = () => (
   <Wrapper>
@@ -16,6 +16,7 @@ const Navbar = () => (
     <LinksWrapper>
       <NavbarLink to="/">Home</NavbarLink>
       <NavbarLink to="/traits">Traits</NavbarLink>
+      <NavbarLink to="/jobs">Jobs</NavbarLink>
     </LinksWrapper>
   </Wrapper>
 );
